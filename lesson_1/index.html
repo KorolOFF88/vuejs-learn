@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Используем переменную из data-модели Vue-приложения -->
+        <h1>Hello {{ message }}!</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",                 // селектор корневого элемента
+            data: {                     // спец. секция дата-модели Vue-приложения
+                message: "KorolOFF"
+            }
+        });
+    </script>
+</body>
+</html>
