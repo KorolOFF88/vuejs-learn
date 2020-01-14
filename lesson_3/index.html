@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <p>
+            <!-- Некорректное использование (надо использовать привязку данных ) -->
+            <!-- <a href="{{ url }}">Google</a> -->
+
+            <!-- 
+                Корректно: с использованием привязки данных к атрибуту элемента
+                1. после двоеточия указывается конкретный атрибут для привязки
+                2. не использовать фигурные скобки
+
+                смысл в том, что атрибут href связывается с динаическим значением url
+            -->
+            <a v-bind:href="url">Google</a>
+            |
+            <!-- также можно использовать более короткую запись -->
+            <a :href="url">Google</a>
+        </p>
+
+
+        <!-- отображение разметки -->
+
+        <!-- html-код из markup отобразиться как текст -->
+        <p>{{ markup }}</p>
+
+        <!-- для вставки html-кода используется конструкция -->
+        <!-- вывод ГОТОВОГО html-кода -->
+        <p v-html="markup"></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        /**
+         * Привязка данных
+         * Используется для добавления специфической информации в DOM:
+         * url-адрес для ссылки, значение для поля input, или вообще вставить кусок разметки
+         */
+        new Vue({
+            el: "#app",
+            data: {
+                // поле для ссылки
+                url: "http://google.com",
+                // html-разметка
+                markup: '<a href="http://yandex.ru">Yandex</a>'
+            }
+        });
+    </script>
+</body>
+</html>
