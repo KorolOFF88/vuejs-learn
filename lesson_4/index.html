@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!--
+            Для добавления событий к элементам используется директива v-on:<любое_событие>
+            либо, короткая форма записи:  @<любое_событие>
+        -->
+
+
+        <!-- Способ 1: обработчики в методах -->
+        <p>
+            Счетчик: {{ counter }}<br>
+            <button v-on:click="incrementCounter">+1</button>
+            <button v-on:click="decrementCounter">-1</button>
+        </p>
+
+        <!-- Способ 2: встроенные обработчики -->
+        <p>
+            Счетчик: {{ counter }}<br>
+            <button v-on:click="counter++">+1</button>
+            <button v-on:click="counter--">-1</button>
+        </p>
+
+        <!-- Способ 3: короткая форма записи директивы v-on -->
+        <p>
+            Счетчик: {{ counter }}<br>
+            <button @click="counter++">+1</button>
+            <button @click="counter--">-1</button>
+        </p>
+
+
+        <!-- Добавление события при наведении -->
+        <h1 @mouseover="onHover">Тестовый элемент</h1>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                counter: 0
+            },
+            methods: {
+                incrementCounter: function() { this.counter++; },
+                decrementCounter: function() { this.counter--; },
+
+                // в обработчик события можно передавать Event
+                // для последующего доступа к элементу
+                onHover: function(event) {
+
+                    event.target.style.color = "red";
+
+                }
+            }
+        });
+    </script>
+</body>
+</html>
