@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. Внутри фигурных скобок можно писать javascript-выражения -->
+    <!-- 2. В них можно обращаться к любым полям из data -->
+    <!-- 3. В них можно обращаться к любым методам из methods -->
+    <div id="app">
+        <h1>Message: {{ message }}</h1>
+        <h1>Sum: {{ 1 + 2 }}!</h1>
+
+        <!-- v-model - связывает input с переменной из data-модели -->
+        <input type="text" v-model="message">
+        <!-- Трассирова данных из модели (с подключением json-фильтра) -->
+        <pre> {{ $data | json }} </pre>
+
+        <div class="student">
+            <h1>{{ sayHello() }}</h1>
+            <h1>Age: {{ age }}</h1>
+            <h1>If statement: {{ isStudent ? "I am a student" : "I am not a student" }}</h1>
+            <!-- использование стандартных js-функций -->
+            <h1>Functions: {{ string.split("").reverse().join("") }} </h1>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        /**
+         * Работа механизма рендеринга:
+         * - vue определяет контейнер с которым ему нужно взаимодействовать (в нашем случае это #app),
+         * - после чего вся разметка из этого контейнера копируется и создается javascript-шаблон, который
+         * заполняется получаемыми данными 
+         * - далее строится результирующий html-код, который рендерится внутри DOM-дерева 
+         * 
+         * Концепция реактивности:
+         * при изменении данных модели (переменные из data), изменения сразу же отображаются везде
+         */
+        new Vue({
+            el: "#app",                 // селектор корневого элемента
+            data: {                     // спец. секция дата-модели Vue-приложения
+                message: "message variable value",
+                age: "31",
+                isStudent: true,
+                name: "KorolOFF",
+                string: "My name is Vladimir"
+            },
+            methods: {                  // спец. секция с методами Vue-приложения
+                sayHello: function() {
+                    // обращение к переменным data-модели через this
+                    return "Hello, my name is " + this.name;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
