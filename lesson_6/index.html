@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- @click.prevent - модификатор отменяющий стандартное действие -->
+        <!-- модификаторы событий можно указывать без пользовательского обработчика -->
+        <p><a href="http://google.com" target="_blank" @click.prevent>Google</a></p>
+
+        <!--
+            Имеются следующие модификаторы событий:
+            1. .stop - отменяет дальнейшее всплытие события (js-аналог stopPropagation())
+            2. .prevent - отменяет событие по умолчанию (js-аналог preventDefault()) (перезагрузка страниц, переход по ссылке, отправка формы и т.д.)
+            3. .capture - использовать capture mode когда добавляется обработчик событияx
+            4. .self - вызывает обработчик при наступлении события непосредственно на элементе
+            5. .once - обработчик будет выполнен только один раз
+            6. .passive - выполнить обработчик сразу после стандартного поведения (не отменять стандартное поведение)
+
+            модификаторы можно объявлять в цепочку (порядок описания модификаторов в цепочке - важен):
+            @click.prevent.self="eHandler"
+        -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+            },
+            methods: {
+            }
+        });
+    </script>
+</body>
+</html>
