@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .large { font-size: 50px; }
+        .border { border: 1px solid red; }
+    </style>
+</head>
+<body>
+    <!-- Возможности стилизации -->
+
+    <div id="app">
+
+        <!-- 
+            Значение для атрибута class передается в виде списка,
+            в нем указывается класс и условие по которому подставлять 
+            этот класс.
+            В данном примере: класс - 'large', условие: fontSize === true
+        -->
+        <!-- <button :class="{'large': fontSize, 'border': border}">{{ title }}</button> -->
+
+
+        <!-- Второй вариант передачи: в виде строки, с некоторым условием -->
+        <!-- <button :class="fontSize ? 'large' : ''">{{ title }}</button> -->
+
+
+        <!-- Третий вариант передачи: в виде массива -->
+        <button :class="[fontSize ? 'large' : '', {'border': border}]">{{ title }}</button>
+
+        <ul>
+            <li>
+                <input type="checkbox" v-model="fontSize">
+                <label for="">Font Size</label>
+            </li>
+            <li>
+                <input type="checkbox" v-model="border">
+                <label for="">Border</label>
+            </li>
+        </ul>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: "test button",
+                fontSize: false,
+                border: false
+            }
+        });
+    </script>
+</body>
+</html>
