@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- ОБРАЩЕНИЕ К НАТИВНЫМ СВОЙСТВАМ ОБЪЕКТОВ -->
+
+        <!-- в атрибуте ref задается имя для h1 (по которому к нему можно будет обратиться) -->
+        <h1 ref="heading">{{ title }}</h1>
+        <button @click="changeTitle">Change Title</button>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: "Title"
+            },
+            methods: {
+                changeTitle: function() {
+                    this.title = "New Title";
+
+                    // обращение к НАТИВНЫМ СВОЙСТВАМ ОБЪЕКТА
+                    this.$refs.heading.style.color = "pink";
+
+                    // в предопределенном объекте $refs располагаются ссылки на все DOM-элементы,
+                    // для которых мы указали имена в html
+                }
+            }
+        });
+    </script>
+</body>
+</html>
