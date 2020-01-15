@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- УСЛОВНЫЙ РЕНДЕРИНГ -->
+
+        <!-- !!! Директива v-if полностью удаляет из DOM-дерева элементы, которые необходимо скрыть -->
+
+        <h2 v-if="isVisible1">Visible</h2>
+        <h2 v-else="!isVisible1">Not visible</h2>
+
+        <button @click="isVisible1 = !isVisible1">Toggle</button>
+
+        <hr>
+
+        <!-- Аналогичная директива v-show -->
+        <!-- В отличии от v-if, директива v-show не удалет скрытые элементы из DOM-дерева -->
+
+
+        <h2 v-show="isVisible2">Visible</h2>
+        <h2 v-show="!isVisible2">Not visible</h2>
+
+        <button @click="isVisible2 = !isVisible2">Toggle</button>
+
+        <hr>
+
+        <!-- Расширенная версия директивы v-if -->
+
+        <h2 v-if="char === 'a'">A</h2>
+        <h2 v-else-if="char === 'b'">B</h2>
+        <h2 v-else-if="char === 'c'">C</h2 v-else>
+        <h2 v-else>Not match</h2>
+
+        <input type="text" v-model="char">
+
+        <hr>
+
+        <template v-if="isVisible1">
+            <h2>I am title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, voluptas.</p>
+        </template>
+
+        <template v-else>
+            <h2 style="color: red">I am title</h2>
+            <p style="color: red">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, voluptas.</p>
+        </template>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                isVisible1: true,
+                isVisible2: true,
+                char: "a"
+            },
+            methods: {
+            }
+        });
+    </script>
+</body>
+</html>
