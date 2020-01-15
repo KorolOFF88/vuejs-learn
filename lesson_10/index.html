@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- СПИСКИ И ЦИКЛЫ -->
+
+        <!-- Доступ к элементам списка -->
+        <ul>
+            <li>{{ students[0] }}</li>
+            <li>{{ students[1] }}</li>
+            <li>{{ students[2] }}</li>
+            <li>{{ students[3] }}</li>
+        </ul>
+
+        <hr>
+
+        <!-- Отображение элементов через цикл -->
+        <ul>
+            <li v-for="(studentItem, index) in students">{{ index + 1 }} {{ studentItem }}</li>
+        </ul>
+
+        <hr>
+
+        <!-- Обход массива объектов -->
+        <ul>
+            <li v-for="tItem in teachers">{{ tItem.name }} - <b>{{ tItem.age }}</b></li>
+        </ul>
+
+        <hr>
+
+        <!-- Вывод списка чисел от 1 до 10 -->
+        <span v-for="n in 10">{{ n }}</span>
+
+        <hr>
+
+        <!-- Проход по свойствам объекта -->
+        <ul>
+            <li v-for="(value, key, index) in person"><em>{{ index + 1 }}</em> <b>{{ key }}:</b> {{ value }}</li>
+        </ul>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                students: ['Konstantin', 'Anna', 'Alex', 'Vladimir'],
+                teachers: [
+                    {name: "Vera", age: 25},
+                    {name: "Alena", age: 27},
+                    {name: "Nastya", age: 29},
+                    {name: "Olya", age: 31},
+                    {name: "Masha", age: 33},
+                ],
+                person: {
+                    name: "Konstantin",
+                    age: 32,
+                    job: "Frontend"
+                }
+            },
+            methods: {
+            }
+        });
+    </script>
+</body>
+</html>
