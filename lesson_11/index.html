@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- ВЫЧИСЛЯЕМЫЕ СВОЙСТВА -->
+
+        <form action="">
+            <!-- Используется вычисляемое поле count из секции computed -->
+            <span>{{ count }} / 30</span>
+
+            <textarea v-model="textValue"></textarea>
+
+            <!-- Отображаем кнопку, пока вычисляемое поле count <= 30 -->
+            <button v-if="count <= 30">Send</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                textValue: ""
+            },
+            // данная секция должна содержать вычисляемые поля.
+            // вычисляемые поля - это функции, которые используются в шаблоне как переменные.
+            // функции вычисляемых полей должны обязательно что-то возвращать
+            computed: {
+                count: function() {
+                    return this.textValue.length;
+                }
+            },
+            // в этой секции можно следить за изменениями определенных свойств из секции data
+            watch: {
+                // данный метод позволяет отследить изменение свойства textValue из секции data
+                // (данный метод вызывает каждый раз, когда меняется значение в textValue из секции data)
+                textValue: function(value) {
+                    console.log(value);
+                }
+            },
+            methods: {
+            }
+        });
+    </script>
+</body>
+</html>
