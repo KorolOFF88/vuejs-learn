@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Жизненный цикл Vue-приложения -->
+
+    <div id="app">
+
+        <h1>{{ title }}</h1>
+        <button @click="title = 'Change Title'">Change</button>
+        <button @click="doDestroy">Destroy</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: "Title"
+            },
+            methods: {
+                doDestroy() {
+                    // Вызывается системный вызов
+                    // по уничтожению компонента
+                    this.$destroy()
+                }
+            },
+            /** 
+             * 1. Вызывается тогда, когда уже прошла инициализация
+             * и Vue готовится создать новое приложение
+             */
+            beforeCreate() {
+                console.log("Before create");
+            },
+            /**
+             * 2. На этом этапе Vue приложение уже будет создано
+             * (но не было создания html-кода)
+             */
+            created() {
+                console.log("Created");
+            },
+            /**
+             * 3. Vue начал анализировать шаблон
+             * (но готовый шаблон еще не вставлен)
+             */
+            beforeMount() {
+                console.log("Before mount");
+            },
+            /**
+             * 4. Анализ шаблона завершен и готовый шаблон
+             * уже вставлен в DOM-дерево
+             */
+            mounted() {
+                console.log("Mounted");
+            },
+
+            /** ВСПОМОГАТЕЛЬНЫЕ ЭТАПЫ **/
+
+            /**
+             * Перед тем как что изменить
+             */
+            beforeUpdate() {
+                console.log("Before update");
+            },
+            /**
+             * После того, как что-то изменилось
+             * (изменения уже закончены)
+             */
+            updated() {
+                console.log("Updated");
+            },
+
+
+            /**
+             * Перед тем как удалить компонент
+             */
+            beforeDestroy() {
+                console.log("Before destroy");
+            },
+            /**
+             * После того, как компонент уже удален
+             */
+            destroyed() {
+                console.log("Destroyed");
+            }
+        });
+    </script>
+</body>
+</html>
