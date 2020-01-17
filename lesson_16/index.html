@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .large { font-size: 50px; }
+        .border { border: 1px solid red; }
+    </style>
+</head>
+<body>
+    <!-- Связывание inline-стилей -->
+
+    <div id="app">
+
+        <button :class="getCss" :style="styles">{{ title }}</button>
+
+        <ul>
+            <li>
+                <input type="checkbox" v-model="fontSize">
+                <label for="">Font Size</label>
+            </li>
+            <li>
+                <input type="checkbox" v-model="border">
+                <label for="">Border</label>
+            </li>
+            <li>
+                <input type="text" v-model="bgColor">
+                <label for="">Background color</label>
+            </li>
+            <li>
+                <input type="range" v-model="range">
+                <label for="">Range</label>
+            </li>
+        </ul>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: "test button",
+                fontSize: false,
+                border: false,
+                bgColor: "pink",
+                range: 20
+            },
+            computed: {
+                getCss() {
+                    return {
+                        'large': this.fontSize,
+                        'border': this.border
+                    }
+                },
+                styles() {
+                    return {
+                        'background-color': this.bgColor,
+                        'margin-left': this.range + '%'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
