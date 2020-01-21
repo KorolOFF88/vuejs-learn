@@ -8,11 +8,14 @@
                :pizzaPriceParam="pizzaPrice"
                @nameChanged="pizzaName = $event"
     ></app-pizza>
+
+    <app-counter></app-counter>
   </div>
 </template>
 
 <script>
 import Pizza from './Pizza.vue'
+import Counter from './Counter.vue'
 
 export default {
   name: 'app',
@@ -25,7 +28,8 @@ export default {
     }
   },
   components: {
-    appPizza: Pizza
+    appPizza: Pizza,
+    appCounter: Counter
   }
 }
 </script>
