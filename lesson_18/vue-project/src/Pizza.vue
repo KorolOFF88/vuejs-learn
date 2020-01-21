@@ -1,7 +1,11 @@
 
 <template>
     <div>
-        <h1>Pizza</h1>
+        <slot name="title"></slot>
+
+        <hr>
+
+        <slot name="text"></slot>
     </div>
 </template>
 
@@ -11,8 +15,8 @@
 </script>
 
 <style scoped>
-/* scoped - для применения стилей только к текущему компоненту */
 div {
     border: 1px solid green;
+    padding: 10px
 }
 </style>
