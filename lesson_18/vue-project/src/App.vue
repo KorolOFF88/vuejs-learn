@@ -3,11 +3,11 @@
     <h1>Parrent PizzaName: {{ pizzaName }}</h1>
     <p>Parrent PizzaPrice: {{ pizzaPrice }} </p>
 
-    <!-- 
-      Входные параметры дочернего компонента (как атрибуты) связаны (bind)
-      с параметрами родительского компонента
-    -->
-    <app-pizza :pizzaNameParam="pizzaName" :pizzaPriceParam="pizzaPrice"></app-pizza>
+    <!-- Обработчик события дочернего компонента -->
+    <app-pizza :pizzaNameParam="pizzaName" 
+               :pizzaPriceParam="pizzaPrice"
+               @nameChanged="pizzaName = $event"
+    ></app-pizza>
   </div>
 </template>
 
