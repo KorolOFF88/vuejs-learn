@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <h1>{{ msg }}</h1>
-    <app-pizza></app-pizza>
+    <h1>Parrent PizzaName: {{ pizzaName }}</h1>
+    <p>Parrent PizzaPrice: {{ pizzaPrice }} </p>
+
+    <!-- 
+      Входные параметры дочернего компонента (как атрибуты) связаны (bind)
+      с параметрами родительского компонента
+    -->
+    <app-pizza :pizzaNameParam="pizzaName" :pizzaPriceParam="pizzaPrice"></app-pizza>
   </div>
 </template>
 
@@ -12,7 +18,10 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      // список параметров, которые будут 
+      // передаваться в дочерний компонент
+      pizzaName: "Деревенская пицца из App.vue",
+      pizzaPrice: 400
     }
   },
   components: {
