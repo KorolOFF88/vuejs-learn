@@ -1,10 +1,8 @@
 import Vue from 'vue'
-import App from './App.vue' 
+import App from './App.vue'
+import ListNames from './ListNames.vue'
 
-// Глобальная регистрация фильтра
-Vue.filter('snippet', (value) => {
-  return value.slice(0, 10)
-})
+Vue.component('app-list', ListNames)
 
 new Vue({
   el: '#app',
