@@ -1,12 +1,13 @@
 <template>
   <div>
     <h2>{{ title }}</h2>
-    <!-- Применение фильтра зарегистрированного локально -->
-    <h2>{{ title | uppercase }}</h2>
-    <!-- Применение фильтра зарегистрированного глобально -->
-    <h2>{{ title | snippet }}</h2>
-    <!-- Фильтры можно объединять в цепочки -->
-    <h2>{{ title | snippet | uppercase }}</h2>
+
+    <input type="text" v-model="search">
+
+    <ul>
+      <li v-for="name in filteredNames" :key="name">{{ name }}</li>
+    </ul>
+
   </div>
 </template>
 
@@ -14,11 +15,19 @@
 export default {
   data() {
     return {
-      title: "Изучаем фильтры"
+      title: "Изучаем фильтры",
+      search: "",
+      names: ['Konstantin', 'Anna', 'Vladimir']
+    }
+  },
+  computed: {
+    filteredNames() {
+      return this.names.filter(name => {
+        return name.toLowerCase().indexOf(this.search) !== -1
+      })
     }
   },
   filters: {
-    // Локальная регистрация фильтра
     uppercase(value) {
       return value.toUpperCase()
     }
