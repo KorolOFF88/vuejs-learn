@@ -1,8 +1,12 @@
 <template>
-  <div id="app">
-    <!-- Используем созданную директиву -->
-    <h2 v-colored:background="'red'">{{ title }}</h2>
-    <h2 v-colored:color="'orange'">{{ title }}</h2>
+  <div>
+    <h2>{{ title }}</h2>
+    <!-- Применение фильтра зарегистрированного локально -->
+    <h2>{{ title | uppercase }}</h2>
+    <!-- Применение фильтра зарегистрированного глобально -->
+    <h2>{{ title | snippet }}</h2>
+    <!-- Фильтры можно объединять в цепочки -->
+    <h2>{{ title | snippet | uppercase }}</h2>
   </div>
 </template>
 
@@ -10,11 +14,14 @@
 export default {
   data() {
     return {
-      title: "Изучение директив"
+      title: "Изучаем фильтры"
+    }
+  },
+  filters: {
+    // Локальная регистрация фильтра
+    uppercase(value) {
+      return value.toUpperCase()
     }
   }
 }
 </script>
-
-<style scoped>
-</style>

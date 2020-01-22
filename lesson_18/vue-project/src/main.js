@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue' 
-import MyDirective from './color.js'
 
-// регистрируем директиву
-Vue.directive('colored', MyDirective)
+// Глобальная регистрация фильтра
+Vue.filter('snippet', (value) => {
+  return value.slice(0, 10)
+})
 
 new Vue({
   el: '#app',
